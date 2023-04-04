@@ -14,9 +14,9 @@ class Rectangle:
 
     def conditionChecker(self, value, attribute_name):
         """Checks for the conditions for width and height:
-    If value is not an int, raise a TypeError
-    also, if value is less than 0, raise ValueError"""
-        if not isinstance(value, int):
+        If value is not an int, raise a TypeError
+        also, if value is less than 0, raise ValueError"""
+        if type(value) is not int:
             raise TypeError(f"{attribute_name} must be an integer")
         if value < 0:
             raise ValueError(f"{attribute_name} must be >= 0")
