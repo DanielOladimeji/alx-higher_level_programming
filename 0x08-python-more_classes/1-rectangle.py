@@ -33,7 +33,7 @@ class Rectangle:
         self.__width = value
 
     @property
-    def heighy(self):
+    def height(self):
         """sets the value of height"""
         self.conditionChecker(value, "height")
         self.__height = value
