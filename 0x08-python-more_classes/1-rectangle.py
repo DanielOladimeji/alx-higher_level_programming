@@ -34,6 +34,10 @@ class Rectangle:
 
     @property
     def height(self):
-        """sets the value of height"""
+        """retrieves height"""
+        return self.__height
+
+    @height.setter(self, value):
+        "sets the value of height"
         self.conditionChecker(value, "height")
         self.__height = value
