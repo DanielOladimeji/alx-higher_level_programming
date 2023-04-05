@@ -2,7 +2,7 @@
 """this program defines a locked class."""
 
 
-    class LockedClass:
+class LockedClass:
         """
         Cannot create new instance attributes,
         except 'first_name')
