@@ -73,7 +73,7 @@ class Rectangle:
         with a length equal to the rrctangle's width
         """
 
-    def __ref__(self):
+    def __repr__(self):
         """
         Returns a string representation of the rectangle
         that can be used to recreate a new instance
