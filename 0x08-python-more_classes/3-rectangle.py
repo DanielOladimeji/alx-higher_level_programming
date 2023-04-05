@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """this program is a class called Rectangle
     it defines a regular rectangle
-    based on 1-rectangle.py but with a non-empty class
+    based on 2-rectangle.py but with a non-empty class
     """
 
 
@@ -53,3 +53,22 @@ class Rectangle:
             return 0
         else:
             return (self.width + self.height) * 2
+
+    def __str__(self):
+        """
+        Returns a string representation of the triangle
+        using the # character.
+        """
+        if self.width == 0 or self.height == 0:
+            return ""
+        """
+        returns an emptt string if width or height = 0
+        """
+
+        rows = ["#" * self.width for _ in range(self.height)]
+        return "\n".join(rows)
+    """
+    rows a list of strings and
+    each string is a sequence of "#" characters
+    with a length equal to the rrctangle's width
+    """
