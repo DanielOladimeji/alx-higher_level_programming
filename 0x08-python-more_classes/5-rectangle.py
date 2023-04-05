@@ -80,7 +80,7 @@ class Rectangle:
         """
         return (f"Rectangle({self.width}, {self.height})")
 
-    def __def__(self):
+    def __del__(self):
         """
         Prints a message 'Bye rectangle'
         when an instance of the Rectangle is deleted
