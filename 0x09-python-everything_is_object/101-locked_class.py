@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-class LockedClass:
-    __slots__ = ("first_name",)
+"""this program defines a locked class."""
 
-    def __setAttribute__(self, name, value):
-        if name != "first_name":
-            raise AttributeError("no new attributes, except first_name")
-        self.__dict__[name] = value
+
+    class LockedClass:
+        """
+        Cannot create new instance attributes,
+        except 'first_name')
+        """
+        __slots__ = ["first_name"]
