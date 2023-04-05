@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """this program is a class called Rectangle
     it defines a regular rectangle
-    based on 4-rectangle.py but with a non-empty class
+    based on 5-rectangle.py but with a non-empty class
     """
 
 
@@ -84,5 +84,5 @@ class Rectangle:
         """
         Deletes a rectangle
         """
-        Rectangle.numbet_of_instances -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
