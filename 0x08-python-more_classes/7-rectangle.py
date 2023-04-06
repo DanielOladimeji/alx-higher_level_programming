@@ -9,7 +9,7 @@ class Rectangle:
     """defines a regular rectangle"""
 
     number_of_instances = 0
-    print_symbol = "#"
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
         """initializes the rectangle with width and height"""
@@ -69,7 +69,7 @@ class Rectangle:
         returns an emptt string if width or height = 0
         """
 
-        rows = ["#" * self.width for _ in range(self.height)]
+        rows = [self.print_symbol * self.width for _ in range(self.height)]
         return "\n".join(rows)
         """
         rows a list of strings and
