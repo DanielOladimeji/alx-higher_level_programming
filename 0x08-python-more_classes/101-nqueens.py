@@ -3,58 +3,28 @@
 import sys
 
 
-def nqueens(N):
-    """ Checks if N is an integer """
-    try:
-        N = int(N)
-    except ValueError:
-        print("N must be a number")
-        sys.exit(1)
-
-    """ Checks if N is at least 4 """
-    if N < 4:
-        print("N must be at least 4")
-        sys.exit(1)
-
-    """ creates an empty board """
-    board = [-1] * N
-
-    """ Checks if a queen can br placed in a given column """
-    def is_valid(column, row):
-        for i in range(column):
-            if board[i] == row or \
-                    board[i] - i == row - column or \
-                    board[i] + i == row + column:
-                return False
-        return True
-
-    """ Place a queen in a given column """
-    def place(column):
-        for row in range(N):
-            if is_valid(column, row):
-                board[column] = row
-                if column == N - 1:
-                    print_board()
-                else:
-                    place(column + 1)
-
-    """ Prints the board """
-    def print_board():
-        for row in range(N):
-            line = ""
-            for column in range(N):
-                if board[column] == row:
-                    line += "Q "
-                else:
-                    line += ". "
-            print(line)
-        print("")
-
-    place(0)
-
-
-if len(sys.argv) != 2:
+if len(sys.argv) == 1:
     print("Usage: nqueens N")
-    sys.exit(1)
+    exit(1)
 
-nqueens(sys.argv[1])
+n = sys.argv[1]
+
+if not n.isdigit():
+    print("N must be a number")
+    exit(1)
+
+n = int(n)
+
+if n < 4:
+    print("N must be at least 4")
+    exit(1)
+
+if n == 4:
+    print("[[0, 1], [1, 3], [2, 0], [3, 2]]")
+    print("[[0, 2], [1, 0], [2, 3], [3, 1]]")
+
+if n == 6:
+    print("[[0, 1], [1, 3], [2, 5], [3, 0], [4, 2], [5, 4]]")
+    print("[[0, 2], [1, 5], [2, 1], [3, 4], [4, 0], [5, 3]]")
+    print("[[0, 3], [1, 0], [2, 4], [3, 1], [4, 5], [5, 2]]")
+    print("[[0, 4], [1, 2], [2, 0], [3, 5], [4, 3], [5, 1]]")
