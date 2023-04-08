@@ -8,15 +8,13 @@ after each of these characters: ., ? and :
 
 
 def text_indentation(text):
-    if not isinstance(text, str):
+    if type(text) is not str:
         raise TypeError("text must be a string")
-
-    buffer = ""
-    for char in text:
-        if char in [".", "?", ":"]:
-            print(buffer.strip())
-            print()
-            buffer = ""
-        else:
-            buffer += char
-    print(buffer.strip())
+    new_text = text.replace(".", ".\n\n")
+    new_text = new_text.replace("?", "?\n\n")
+    new_text = new_text.replace(":", ":\n\n")
+    new_line = []
+    for line in new_text.split("\n"):
+        new_line.append(line.strip(" "))
+    print_text = "\n".join(new_line)
+    print(print_text, end="")
