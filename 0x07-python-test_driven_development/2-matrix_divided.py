@@ -37,4 +37,3 @@ def matrix_divided(matrix, div):
             newRow.append(round(el/div, 2))
         newMatrix.append(newRow)
     return newMatrix
-
