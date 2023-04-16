@@ -1,4 +1,6 @@
-""" 10-student.py: Student to JSON with filter
+#!/usr/bin/python3
+"""
+10-student.py: Student to JSON with filter
 Defines a student based on 9-student.py
 """
 
