@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """11-student.py: Student to disk and reload
 Defines a student based on 10-student.py
 """
