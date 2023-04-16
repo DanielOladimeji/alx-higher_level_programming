@@ -5,6 +5,6 @@ import json
 
 def load_from_json_file(filename):
     """creates an Object from a JSON file"""
-    with open(filename, 'r') as myfile:
+    with open(filename) as myfile:
         obj = json.load(myfile)
         return obj
