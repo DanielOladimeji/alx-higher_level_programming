@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 """7-add_item.py: Load, add, save"""
 import sys
 
