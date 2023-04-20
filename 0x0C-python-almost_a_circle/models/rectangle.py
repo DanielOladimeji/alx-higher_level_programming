@@ -86,12 +86,10 @@ class Rectangle(Base):
         return (self.width * self.height)
 
     def display(self):
-        """Print the rectangle with `#` characters"""
-        for _ in range(self.y):
-            print()
-
-        for _ in range(self.height):
-            print(" " * self.x + "#" * self.width)
+        """Print in stdout the rectangle with `#` characters with x and y"""
+        print('\n' * self.y, end='')
+        for i in range(self.height):
+            print(' ' * self.x + '#' * self.width)
 
     def __str__(self):
         """return the formatted str() when print()"""
