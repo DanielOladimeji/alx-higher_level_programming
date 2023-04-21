@@ -34,3 +34,9 @@ class Base:
             else:
                 obj_list = [o.to_dictionary() for o in list_objs]
                 f.write(cls.to_json_string(obj_list))
+
+    @staticmethod
+    def from_json_string(json_string):
+        if not json_string:
+            return []
+        return json.loads(json_string)
