@@ -49,8 +49,5 @@ def create(cls, **dictionary):
             dummy = cls(1, 2)
         elif cls.__name__ == "Square":
             dummy = cls(1)
-        else:
-            raise ValueError("Invalid class type")
-        for key, value in dictionary.items():
-            setattr(dummy, key, value)
+        dummy.update(**dictionary)
         return dummy
