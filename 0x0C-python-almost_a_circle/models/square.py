@@ -16,11 +16,12 @@ class Square(Rectangle):
         NB: All arguments are int values
         """
         super().__init__(size, size, x, y, id)
+        self.size = size
 
     @property
     def size(self):
         """Gets the size of the Square"""
-        return self.__width
+        return self.width
 
     @size.setter
     def size(self, value):
