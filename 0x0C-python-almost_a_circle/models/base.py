@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ models base """
 import json
+import csv
 
 
 class Base:
@@ -60,5 +61,39 @@ class Base:
                 json_string = f.read()
                 obj_list = cls.from_json_string(json_string)
                 return [cls.create(**d) for d in obj_list]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode="w", encoding="utf-8", newline='') as f:
+            writer = csv.writer(f)
+            for obj in list_objs:
+                if isinstance(obj, Rectangle):
+                    row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                    writer.writerow(row)
+                elif isinstance(obj, Square):
+                    row = [obj.id, obj.size, obj.x, obj.y]
+                    writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, mode="r", encoding="utf-8", newline='') as f:
+                reader = csv.reader(f)
+                list_objs = []
+                for row in reader:
+                    if cls.__name__ == "Rectangle":
+                        dict_args = {'id': int(row[0]), 'width': int(row[1]),
+                                     'height': int(row[2]), 'x': int(row[3]),
+                                     'y': int(row[4])}
+                    elif cls.__name__ == "Square":
+                        dict_args = {'id': int(row[0]), 'size': int(row[1]),
+                                     'x': int(row[2]), 'y': int(row[3])}
+                    obj = cls.create(**dict_args)
+                    list_objs.append(obj)
+                return list_objs
         except FileNotFoundError:
             return []
