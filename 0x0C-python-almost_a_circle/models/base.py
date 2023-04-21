@@ -40,3 +40,17 @@ class Base:
         if not json_string:
             return []
         return json.loads(json_string)
+
+    @classmethod
+def create(cls, **dictionary):
+    """Return an instance with all attributes already set."""
+    if dictionary is not None:
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 2)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        else:
+            raise ValueError("Invalid class type")
+        for key, value in dictionary.items():
+            setattr(dummy, key, value)
+        return dummy
