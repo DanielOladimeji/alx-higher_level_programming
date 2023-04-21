@@ -66,34 +66,35 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """serialization - csv file"""
         filename = cls.__name__ + ".csv"
-        with open(filename, mode="w", encoding="utf-8", newline='') as f:
-            writer = csv.writer(f)
-            for obj in list_objs:
-                if isinstance(obj, Rectangle):
-                    row = [obj.id, obj.width, obj.height, obj.x, obj.y]
-                    writer.writerow(row)
-                elif isinstance(obj, Square):
-                    row = [obj.id, obj.size, obj.x, obj.y]
-                    writer.writerow(row)
+        with open(filename, "w", newline="") as myfile:
+            if list_objs is None or len(list_objs) == 0:
+                myfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    attributename = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    attributename = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(myfile, fieldnames=attributename)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
+        """deserialiation - csv file"""
         filename = cls.__name__ + ".csv"
+        list_objs = []
         try:
-            with open(filename, mode="r", encoding="utf-8", newline='') as f:
-                reader = csv.reader(f)
-                list_objs = []
-                for row in reader:
-                    if cls.__name__ == "Rectangle":
-                        dict_args = {'id': int(row[0]), 'width': int(row[1]),
-                                     'height': int(row[2]), 'x': int(row[3]),
-                                     'y': int(row[4])}
-                    elif cls.__name__ == "Square":
-                        dict_args = {'id': int(row[0]), 'size': int(row[1]),
-                                     'x': int(row[2]), 'y': int(row[3])}
-                    obj = cls.create(**dict_args)
-                    list_objs.append(obj)
+            with open(filename, "r", newline="") as csvfile:
+                if cls.__name__ == "Rectangle":
+                    attributename = ["id", "width", "height", "x", "y"]
+                if cls.__name__ == "Square":
+                    attributename = ["id", "size", "x", "y"]
+                reader = csv.DictReader(csvfile, fieldnames=attributename)
+                for item in reader:
+                    item = {k: int(v) for k, v in item.items()}
+                    list_objs.append(cls.create(**item))
                 return list_objs
-        except FileNotFoundError:
-            return []
+        except Exception:
+            return list_objs
