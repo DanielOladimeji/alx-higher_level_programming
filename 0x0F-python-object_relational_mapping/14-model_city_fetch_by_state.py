@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This script 14-model_city_fetch_by_state.py that prints 
+This script 14-model_city_fetch_by_state.py that prints
 all City objects from the database hbtn_0e_14_usa
 """
 import sys
