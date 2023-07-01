@@ -4,7 +4,7 @@ let i;
 if (isNaN(num)) {
   console.log('Missing size');
 } else {
-  for (i = 1; i <= nu; i++) {
+  for (i = 1; i <= nmu; i++) {
     console.log('X'.repeat(num));
   }
 }
